@@ -1,7 +1,7 @@
 'use strict'
 
 const Hapi = require('@hapi/hapi')
-const Joi = require('@hapi/joi')
+const Joi = require('joi')
 const Relish = require('../')
 
 const Code = require('@hapi/code')
@@ -118,7 +118,7 @@ describe('Relish', () => {
           payload: {}
         })
 
-        res.result.validation.errors.map((error) => {
+        res.result.validation.errors.forEach((error) => {
           expect(error.message).to.contain(['"'])
         })
       })
@@ -130,7 +130,7 @@ describe('Relish', () => {
           payload: {}
         })
 
-        res.result.validation.errors.map((error) => {
+        res.result.validation.errors.forEach((error) => {
           expect(error.message).to.not.contain(['"'])
         })
       })
@@ -148,7 +148,7 @@ describe('Relish', () => {
         expect(res.result.validation).to.exist().and.to.be.an.object()
         expect(res.result.validation.errors).to.exist().and.to.be.an.array().and.to.not.be.empty()
 
-        res.result.validation.errors.map((error) => {
+        res.result.validation.errors.forEach((error) => {
           expect(error).to.be.an.object()
           expect(Object.keys(error)).to.contain(['message', 'key', 'path', 'type', 'constraint'])
         })
@@ -161,7 +161,7 @@ describe('Relish', () => {
           payload: {}
         })
 
-        res.result.validation.errors.map((error) => {
+        res.result.validation.errors.forEach((error) => {
           expect(error.message).to.not.contain(['child', 'because of'])
         })
       })
@@ -177,7 +177,7 @@ describe('Relish', () => {
 
         let passed = false
 
-        res.result.validation.errors.map((error) => {
+        res.result.validation.errors.forEach((error) => {
           if (error.key === 'email') {
             passed = true
             expect(error.message).to.equal(customMessages.email)
@@ -198,7 +198,7 @@ describe('Relish', () => {
 
         let passed = false
 
-        res.result.validation.errors.map((error) => {
+        res.result.validation.errors.forEach((error) => {
           if (error.path === 'data.phone') {
             passed = true
             expect(error.message).to.equal(customMessages[error.path])
@@ -219,7 +219,7 @@ describe('Relish', () => {
 
         let passed = false
 
-        res.result.validation.errors.map((error) => {
+        res.result.validation.errors.forEach((error) => {
           if (error.path === 'data.name') {
             passed = true
             expect(Object.prototype.hasOwnProperty.call(error, 'label')).to.be.true()

@@ -1,6 +1,6 @@
 {
   "name": "relish",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Better error messages for Hapi.js Joi validation",
   "main": "index.js",
   "scripts": {
@@ -13,11 +13,11 @@
     "postversion": "git push && git push --tags"
   },
   "engines": {
-    "node": ">= 8.9.0"
+    "node": ">= 12"
   },
   "peerDependencies": {
     "@hapi/hapi": ">=18",
-    "@hapi/joi": ">=15"
+    "joi": ">=15"
   },
   "author": "Dialexa",
   "contributors": [
@@ -41,16 +41,20 @@
   "homepage": "https://github.com/dialexa/relish",
   "bugs": "https://github.com/dialexa/relish/issues",
   "dependencies": {
-    "@hapi/hoek": "~8.2.4"
+    "@hapi/hoek": "~9.2.1"
   },
   "devDependencies": {
-    "@hapi/code": "~6.0.0",
+    "@babel/core": "^7.16.0",
+    "@babel/eslint-parser": "^7.16.3",
+    "@hapi/code": "~8.0.5",
+    "@hapi/eslint-plugin": "^5.1.0",
+    "@hapi/hapi": "~20.2.1",
+    "@hapi/lab": "~24.4.0",
     "coveralls": "~3.0.6",
-    "@hapi/hapi": "~18.4.0",
-    "@hapi/joi": "~16.1.4",
-    "@hapi/lab": "~20.2.2",
+    "eslint": "^8.4.1",
+    "joi": "~17.5.0",
     "markdown-toc": "~1.2.0",
-    "snazzy": "~8.0.0",
-    "standard": "~14.3.1"
+    "snazzy": "~9.0.0",
+    "standard": "~16.0.4"
   }
 }
